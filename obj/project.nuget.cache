@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "qctAe0FYSwCz9rntB2Tf12Jf4VgTFnXismnnOvPY3fU26jTZ7jzPIhDtHiiM9soHyTpeO3iJoHFqpTUIW97oDw==",
+  "dgSpecHash": "th5NsBF1zU1iN8KIuTCzTdJEtc5QAiYHV8snwcqW8sNtOCy9J/BIBbAc45C3Em09msXQ6SXOFokrx0LfQMrJ/w==",
   "success": true,
   "projectFilePath": "D:\\Learn\\2 Programowanie\\Programs\\StoreofM-I\\StoreofM-I.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\acer\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\acer\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

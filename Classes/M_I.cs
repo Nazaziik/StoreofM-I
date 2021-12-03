@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Imaging;
+using System.Windows.Media.Imaging;
 
 namespace StoreofM_I
 {
