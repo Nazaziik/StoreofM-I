@@ -9,18 +9,18 @@ using System.Windows.Input;
 
 namespace StoreofM_I.Windows.Controls
 {
-    internal class SerialNumberControl : TextBox
+    public class SerialNumberControl : TextBox
     {
         public SerialNumberControl()
         {
-            this.TextChanged += PeselBox_TextChanged;
-            this.PreviewTextInput += PeselBox_PreviewTextInput;
+            this.TextChanged += SerialNumberControl_TextChanged;
+            this.PreviewTextInput += SerialNumberControl_PreviewTextInput;
             this.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Center;
         }
 
         private Regex mvarRegex = new Regex(@"\b\d{1,11}\b");
 
-        private void PeselBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void SerialNumberControl_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             string lvarTextToCheck = string.Empty;
 
@@ -37,7 +37,7 @@ namespace StoreofM_I.Windows.Controls
                 e.Handled = true;
         }
 
-        private void PeselBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void SerialNumberControl_TextChanged(object sender, TextChangedEventArgs e)
         {
             string lvarText = "";
             int lvarPosition = this.SelectionStart;

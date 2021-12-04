@@ -18,11 +18,18 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.ColumnSpan="2">
-            <DataGrid  Margin="10px 20px 10px 0px" x:Name="ctlGrid" AutoGenerateColumns="False">
+            <DataGrid  Margin="10px 20px 10px 0px" x:Name="ctlGrid" AutoGenerateColumns="False" IsReadOnly="True">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Name" Width="1*" Binding="{Binding Name}"/>
-                    <DataGridTextColumn Header="Surname" Width="1*" Binding="{Binding Surename}"/>
-                    <DataGridTextColumn Header="Pessel" Width="1*" Binding="{Binding Pesel}"/>
+                    <DataGridTemplateColumn Header="Photo" Width="0.5*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Bitmap}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Owner Name" Width="1*" Binding="{Binding OwnerName}"/>
+                    <DataGridTextColumn Header="Producent" Width="1*" Binding="{Binding Producent}"/>
+                    <DataGridTextColumn Header="Serial Number" Width="1*" Binding="{Binding SerialNumber}"/>
                     <DataGridTextColumn Header="Age" Width="0.4*" Binding="{Binding Age}"/>
                 </DataGrid.Columns>
             </DataGrid>

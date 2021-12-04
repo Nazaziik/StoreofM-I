@@ -22,20 +22,20 @@ namespace StoreofM_I.Windows
         public DeleteM_IWindow()
         {
             InitializeComponent();
-            dltGrid.ItemsSource = M_I.PersonsList;
+            dltGrid.ItemsSource = M_I.M_IList;
         }
 
         private void SubmitDeleteButton_click(object sender, RoutedEventArgs e)
         {
-            int index = M_I.PersonsList.IndexOf(dltGrid.SelectedItem as M_I);
+            int index = M_I.M_IList.IndexOf(dltGrid.SelectedItem as M_I);
             if (index > -1)
             {
-                M_I.PersonsList.RemoveAt(index);
+                M_I.M_IList.RemoveAt(index);
             }
             SurenameDltBox.Text = String.Empty;
             PeselDltBox.Text = String.Empty;
             DoBDltDatePicker.Text = String.Empty;
-            dltGrid.ItemsSource = M_I.PersonsList;
+            dltGrid.ItemsSource = M_I.M_IList;
             dltGrid.Items.Refresh();
         }
 
@@ -48,41 +48,41 @@ namespace StoreofM_I.Windows
         {
             if (SurenameDltBox.Text == "" && PeselDltBox.Text == "" && DoBDltDatePicker.Text == "")
             {
-                dltGrid.ItemsSource = M_I.PersonsList;
+                dltGrid.ItemsSource = M_I.M_IList;
             }
             else if (SurenameDltBox.Text != "" && PeselDltBox.Text == "" && DoBDltDatePicker.Text == "")
             {
-                List<M_I> tempFilterList = (List<M_I>)M_I.PersonsList.Where(a => a.WhereProducent(SurenameDltBox.Text)).ToList();
+                List<M_I> tempFilterList = (List<M_I>)M_I.M_IList.Where(a => a.WhereProducent(SurenameDltBox.Text)).ToList();
                 dltGrid.ItemsSource = tempFilterList;
             }
             else if (SurenameDltBox.Text == "" && PeselDltBox.Text != "" && DoBDltDatePicker.Text == "")
             {
-                List<M_I> tempFilterList = (List<M_I>)M_I.PersonsList.Where(a => a.WhereSerNum(PeselDltBox.Text)).ToList();
+                List<M_I> tempFilterList = (List<M_I>)M_I.M_IList.Where(a => a.WhereSerNum(PeselDltBox.Text)).ToList();
                 dltGrid.ItemsSource = tempFilterList;
             }
             else if (SurenameDltBox.Text == "" && PeselDltBox.Text == "" && DoBDltDatePicker.Text != "")
             {
-                List<M_I> tempFilterList = (List<M_I>)M_I.PersonsList.Where(a => a.WhereProdDate(DoBDltDatePicker.Text)).ToList();
+                List<M_I> tempFilterList = (List<M_I>)M_I.M_IList.Where(a => a.WhereProdDate(DoBDltDatePicker.Text)).ToList();
                 dltGrid.ItemsSource = tempFilterList;
             }
             else if (SurenameDltBox.Text != "" && PeselDltBox.Text != "" && DoBDltDatePicker.Text == "")
             {
-                List<M_I> tempFilterList = (List<M_I>)M_I.PersonsList.Where(a => a.WhereProducent(SurenameDltBox.Text) && a.WhereSerNum(PeselDltBox.Text)).ToList();
+                List<M_I> tempFilterList = (List<M_I>)M_I.M_IList.Where(a => a.WhereProducent(SurenameDltBox.Text) && a.WhereSerNum(PeselDltBox.Text)).ToList();
                 dltGrid.ItemsSource = tempFilterList;
             }
             else if (SurenameDltBox.Text == "" && PeselDltBox.Text != "" && DoBDltDatePicker.Text != "")
             {
-                List<M_I> tempFilterList = (List<M_I>)M_I.PersonsList.Where(a => a.WhereSerNum(PeselDltBox.Text) && a.WhereProdDate(DoBDltDatePicker.Text)).ToList();
+                List<M_I> tempFilterList = (List<M_I>)M_I.M_IList.Where(a => a.WhereSerNum(PeselDltBox.Text) && a.WhereProdDate(DoBDltDatePicker.Text)).ToList();
                 dltGrid.ItemsSource = tempFilterList;
             }
             else if (SurenameDltBox.Text != "" && PeselDltBox.Text == "" && DoBDltDatePicker.Text != "")
             {
-                List<M_I> tempFilterList = (List<M_I>)M_I.PersonsList.Where(a => a.WhereProducent(SurenameDltBox.Text) && a.WhereProdDate(DoBDltDatePicker.Text)).ToList();
+                List<M_I> tempFilterList = (List<M_I>)M_I.M_IList.Where(a => a.WhereProducent(SurenameDltBox.Text) && a.WhereProdDate(DoBDltDatePicker.Text)).ToList();
                 dltGrid.ItemsSource = tempFilterList;
             }
             else if (SurenameDltBox.Text != "" && PeselDltBox.Text != "" && DoBDltDatePicker.Text != "")
             {
-                List<M_I> tempFilterList = (List<M_I>)M_I.PersonsList.Where(a => a.WhereProducent(SurenameDltBox.Text) && a.WhereSerNum(PeselDltBox.Text) && a.WhereProdDate(DoBDltDatePicker.Text)).ToList();
+                List<M_I> tempFilterList = (List<M_I>)M_I.M_IList.Where(a => a.WhereProducent(SurenameDltBox.Text) && a.WhereSerNum(PeselDltBox.Text) && a.WhereProdDate(DoBDltDatePicker.Text)).ToList();
                 dltGrid.ItemsSource = tempFilterList;
             }
         }

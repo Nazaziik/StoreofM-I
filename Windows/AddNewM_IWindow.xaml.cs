@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -16,39 +17,36 @@ using System.Windows.Shapes;
 
 namespace StoreofM_I.Windows
 {
-    /// <summary>
-    /// Interaction logic for AddNewM_I.xaml
-    /// </summary>
     public partial class AddNewM_I : Window
     {
         public AddNewM_I()
         {
             InitializeComponent();
-            this.DataContext = os;
+            this.DataContext = m_i;
         }
-        readonly M_I os = new M_I();
+        readonly M_I m_i = new M_I();
 
         private void SubmitAddButton(object sender, RoutedEventArgs e)
         {
-            if (M_I.PersonsList.Count != 0)
+            if (M_I.M_IList.Count != 0)
             {
                 bool samePerson = false;
-                for (int i = 0; i < M_I.PersonsList.Count; i++)
+                for (int i = 0; i < M_I.M_IList.Count; i++)
                 {
-                    if (M_I.PersonsList[i].SerialNumber == os.SerialNumber)
+                    if (M_I.M_IList[i].SerialNumber == m_i.SerialNumber)
                     {
                         samePerson = true;
-                        MessageBox.Show($"You already have person with that pesel {os.SerialNumber}");
+                        MessageBox.Show($"You already have person with that pesel {m_i.SerialNumber}");
                         break;
                     }
                 }
                 if (!samePerson)
                 {
-                    M_I.PersonsList.Add(os);
+                    M_I.M_IList.Add(m_i);
                 }
             }
             else
-                M_I.PersonsList.Add(os);
+                M_I.M_IList.Add(m_i);
 
             this.Close();
         }
@@ -60,10 +58,17 @@ namespace StoreofM_I.Windows
 
         private void OpenFileDialogButton(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+            var openFileDialog = new OpenFileDialog
+            {
+                Filter = "Images | *.bmp; *.png; *.jpg; *.JPEG"
+            };
             if (openFileDialog.ShowDialog() == true)
-                txtEditor.Text = File.ReadAllText(openFileDialog.FileName);
+            {
+                //txtEditor.Text = File.ReadAllText(openFileDialog.FileName);
+                string fileName = openFileDialog.FileName;
+                Bitmap bitmap = new Bitmap(fileName);
+                m_i.Bitmap = bitmap;
+            }
         }
     }
 }

@@ -22,16 +22,16 @@ namespace StoreofM_I
         public MainWindow()
         {
             InitializeComponent();
-            bool fileExists = File.Exists($"{Environment.CurrentDirectory}\\PersonsList.xml");
+            bool fileExists = File.Exists($"{Environment.CurrentDirectory}\\M_IList.xml");
             if (!fileExists)
             {
-                M_I.PersonsList = new List<M_I>();
+                M_I.M_IList = new List<M_I>();
             }
             else
             {
-                M_I.PersonsList = Seriazation.DeserializeToObject<List<M_I>>($"{Environment.CurrentDirectory}\\PersonsList.xml");
+                M_I.M_IList = Seriazation.DeserializeToObject<List<M_I>>($"{Environment.CurrentDirectory}\\M_IList.xml");
             }
-            ctlGrid.ItemsSource = M_I.PersonsList;
+            ctlGrid.ItemsSource = M_I.M_IList;
         }
 
         private void AddButton(object sender, RoutedEventArgs e)
@@ -50,7 +50,7 @@ namespace StoreofM_I
 
         private void NeedSerializeData(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Seriazation.SerializeToXml<List<M_I>>(M_I.PersonsList, $"{Environment.CurrentDirectory}\\PersonsList.xml");
+            Seriazation.SerializeToXml<List<M_I>>(M_I.M_IList, $"{Environment.CurrentDirectory}\\PersonsList.xml");
         }
     }
 }

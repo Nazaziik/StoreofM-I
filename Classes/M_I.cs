@@ -6,11 +6,11 @@ namespace StoreofM_I
 {
     public class M_I
     {
-        private string name;
-        public string Name
+        private string ownerName;
+        public string OwnerName
         {
-            get { return name; }
-            set { name = value; }
+            get { return ownerName; }
+            set { ownerName = value; }
         }
 
         private string producent;
@@ -55,11 +55,11 @@ namespace StoreofM_I
             set { bitmap = value; }
         }
 
-        static public List<M_I> PersonsList;
+        static public List<M_I> M_IList;
 
-        public M_I(string name, string producent, int age, string serialNumber, string produsingDate, string tyOf, Bitmap bitmap)
+        public M_I(string ownerName, string producent, int age, string serialNumber, string produsingDate, string tyOf, Bitmap bitmap)
         {
-            this.name = name;
+            this.ownerName = ownerName;
             this.producent = producent;
             this.age = age;
             this.serialNumber = serialNumber;
@@ -67,14 +67,14 @@ namespace StoreofM_I
             this.typeOf = tyOf;
             this.bitmap = bitmap;
 
-            PersonsList.Add(this);
+            M_IList.Add(this);
         }
 
         public M_I() { }
 
         public M_I(M_I MusicalInstrument)
         {
-            this.name = MusicalInstrument.name;
+            this.ownerName = MusicalInstrument.ownerName;
             this.producent = MusicalInstrument.producent;
             this.age = MusicalInstrument.age;
             this.serialNumber = MusicalInstrument.serialNumber;

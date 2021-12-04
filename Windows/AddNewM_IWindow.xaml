@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:StoreofM_I.Windows"
+        xmlns:local="clr-namespace:StoreofM_I.Windows.Controls"
         mc:Ignorable="d"
         Title="AddNewM_I" Height="600" Width="400">
     <Grid>
@@ -30,10 +30,10 @@
         <TextBlock Grid.Column="0" Grid.Row="4" TextAlignment="Center" VerticalAlignment="Center">Produsing Date</TextBlock>
         <TextBlock Grid.Column="0" Grid.Row="5" TextAlignment="Center" VerticalAlignment="Center">Type</TextBlock>
         <TextBlock Grid.Column="0" Grid.Row="6" TextAlignment="Center" VerticalAlignment="Center">Image</TextBlock>
-        <TextBox x:Name="NameBox" Grid.Column="1" Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center" Margin = "10px" Text="{Binding Name}"/>
+        <TextBox x:Name="NameBox" Grid.Column="1" Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center" Margin = "10px" Text="{Binding OwnerName}"/>
         <TextBox x:Name="SurnameBox" Grid.Column="1" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center" Margin = "10px" Text="{Binding Producent}"/>
-        <TextBox x:Name="AgeBox" Grid.Column="1" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center" Margin = "10px" Text="{Binding Age}"/>
-        <TextBox x:Name="PeselBox" Grid.Column="1" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center" Margin = "10px" Text="{Binding SerialNumber}"/>
+        <local:AgeControl x:Name="AgeBox" Grid.Column="1" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center" Margin = "10px" Text="{Binding Age}"/>
+        <local:SerialNumberControl x:Name="PeselBox" Grid.Column="1" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center" Margin = "10px" Text="{Binding SerialNumber}"/>
         <DatePicker x:Name="DataPicker" Grid.Column="1" Grid.Row="4" Margin="20px" Text="{Binding ProdusingDate}"/>
         <TextBox x:Name="GenderBox" Grid.Column="1" Grid.Row="5" TextAlignment="Center" VerticalAlignment="Center" Margin = "10px" Text="{Binding TypeOf}"/>
         <Grid Grid.Column="1" Grid.Row="6">
@@ -42,7 +42,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Button x:Name="ImageButton" Grid.Column="0"  VerticalAlignment="Center" Margin = "10px" Click="OpenFileDialogButton">Add Image</Button>
-            <TextBlock x:Name="txtEditor" Grid.Column="1" />
+            <TextBox x:Name="txtEditor" Grid.Column="1" Margin="63.75px 10px 0px 10px" Width="60px" IsReadOnly="True"/>
         </Grid>
         <Button Grid.Column="0" Grid.Row="7" Click="CancelAddButton">Cancel</Button>
         <Button Grid.Column="1" Grid.Row="7" Click="SubmitAddButton">Submit</Button>
