@@ -36,7 +36,7 @@ namespace StoreofM_I.Windows
                     if (M_I.M_IList[i].SerialNumber == m_i.SerialNumber)
                     {
                         samePerson = true;
-                        MessageBox.Show($"You already have person with that pesel {m_i.SerialNumber}");
+                        MessageBox.Show($"You already have instrument with that serial number {m_i.SerialNumber}");
                         break;
                     }
                 }
@@ -64,7 +64,6 @@ namespace StoreofM_I.Windows
             };
             if (openFileDialog.ShowDialog() == true)
             {
-                //txtEditor.Text = File.ReadAllText(openFileDialog.FileName);
                 string fileName = openFileDialog.FileName;
                 Bitmap bitmap = new Bitmap(fileName);
                 m_i.Bitmap = bitmap;

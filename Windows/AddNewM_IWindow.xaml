@@ -36,14 +36,7 @@
         <local:SerialNumberControl x:Name="PeselBox" Grid.Column="1" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center" Margin = "10px" Text="{Binding SerialNumber}"/>
         <DatePicker x:Name="DataPicker" Grid.Column="1" Grid.Row="4" Margin="20px" Text="{Binding ProdusingDate}"/>
         <TextBox x:Name="GenderBox" Grid.Column="1" Grid.Row="5" TextAlignment="Center" VerticalAlignment="Center" Margin = "10px" Text="{Binding TypeOf}"/>
-        <Grid Grid.Column="1" Grid.Row="6">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Button x:Name="ImageButton" Grid.Column="0"  VerticalAlignment="Center" Margin = "10px" Click="OpenFileDialogButton">Add Image</Button>
-            <TextBox x:Name="txtEditor" Grid.Column="1" Margin="63.75px 10px 0px 10px" Width="60px" IsReadOnly="True"/>
-        </Grid>
+        <Button x:Name="ImageButton" Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" Margin = "50px 10px 50px 10px" Click="OpenFileDialogButton">Add Image</Button>
         <Button Grid.Column="0" Grid.Row="7" Click="CancelAddButton">Cancel</Button>
         <Button Grid.Column="1" Grid.Row="7" Click="SubmitAddButton">Submit</Button>
     </Grid>
