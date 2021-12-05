@@ -62,6 +62,7 @@ namespace StoreofM_I
         }
 
         static public List<M_I> M_IList;
+        public static Type[] types = new Type[] { typeof(string), typeof(byte[]), typeof(bool), typeof(int) };
 
         public M_I(string ownerName, string producent, int age, string serialNumber, string produsingDate, string tyOf, Bitmap bitmap)
         {
