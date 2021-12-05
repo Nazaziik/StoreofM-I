@@ -22,21 +22,43 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-
-        <TextBlock Grid.Column="0" Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center">Name</TextBlock>
-        <TextBlock Grid.Column="0" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center">Producent</TextBlock>
-        <TextBlock Grid.Column="0" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center">Age</TextBlock>
-        <TextBlock Grid.Column="0" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center">SerialNumber</TextBlock>
-        <TextBlock Grid.Column="0" Grid.Row="4" TextAlignment="Center" VerticalAlignment="Center">Produsing Date</TextBlock>
-        <TextBlock Grid.Column="0" Grid.Row="5" TextAlignment="Center" VerticalAlignment="Center">Type</TextBlock>
-        <TextBlock Grid.Column="0" Grid.Row="6" TextAlignment="Center" VerticalAlignment="Center">Image</TextBlock>
+        <!--Name-->
+        <TextBlock Grid.Column="0" Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center">Owner Name</TextBlock>
         <TextBox x:Name="NameBox" Grid.Column="1" Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center" Margin = "10px" Text="{Binding OwnerName}"/>
+
+        <!--Producent-->
+        <TextBlock Grid.Column="0" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center">Producent</TextBlock>
         <TextBox x:Name="SurnameBox" Grid.Column="1" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center" Margin = "10px" Text="{Binding Producent}"/>
+
+        <!--Age-->
+        <TextBlock Grid.Column="0" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center">Age</TextBlock>
         <local:AgeControl x:Name="AgeBox" Grid.Column="1" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center" Margin = "10px" Text="{Binding Age}"/>
+
+        <!--SerialNumber-->
+        <TextBlock Grid.Column="0" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center">SerialNumber</TextBlock>
         <local:SerialNumberControl x:Name="PeselBox" Grid.Column="1" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center" Margin = "10px" Text="{Binding SerialNumber}"/>
+
+        <!--ProdusingDate-->
+        <TextBlock Grid.Column="0" Grid.Row="4" TextAlignment="Center" VerticalAlignment="Center">Produsing Date</TextBlock>
         <DatePicker x:Name="DataPicker" Grid.Column="1" Grid.Row="4" Margin="20px" Text="{Binding ProdusingDate}"/>
+
+        <!--Type-->
+        <TextBlock Grid.Column="0" Grid.Row="5" TextAlignment="Center" VerticalAlignment="Center">Type</TextBlock>
         <TextBox x:Name="GenderBox" Grid.Column="1" Grid.Row="5" TextAlignment="Center" VerticalAlignment="Center" Margin = "10px" Text="{Binding TypeOf}"/>
-        <Button x:Name="ImageButton" Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" Margin = "50px 10px 50px 10px" Click="OpenFileDialogButton">Add Image</Button>
+
+        <!--Image-->
+        <TextBlock Grid.Column="0" Grid.Row="6" TextAlignment="Center" VerticalAlignment="Center">Image</TextBlock>        
+        <Grid Grid.Column="1" Grid.Row="6" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Image x:Name="imgDynamic" Stretch="Fill"/>
+            <Button x:Name="ImageButton" Grid.Column="1" VerticalAlignment="Center" Margin = "20px 10px 20px 10px" Click="OpenFileDialogButton">Add Image</Button>
+        </Grid>
+        
+        <!--Buttons-->
         <Button Grid.Column="0" Grid.Row="7" Click="CancelAddButton">Cancel</Button>
         <Button Grid.Column="1" Grid.Row="7" Click="SubmitAddButton">Submit</Button>
     </Grid>

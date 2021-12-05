@@ -65,6 +65,8 @@ namespace StoreofM_I.Windows
             if (openFileDialog.ShowDialog() == true)
             {
                 string fileName = openFileDialog.FileName;
+                Uri fileUri = new Uri(fileName);
+                imgDynamic.Source = new BitmapImage(fileUri);
                 Bitmap bitmap = new Bitmap(fileName);
                 m_i.Bitmap = bitmap;
             }
