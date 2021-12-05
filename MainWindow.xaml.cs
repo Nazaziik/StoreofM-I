@@ -22,14 +22,21 @@ namespace StoreofM_I
         public MainWindow()
         {
             InitializeComponent();
-            bool fileExists = File.Exists($"{Environment.CurrentDirectory}\\M_IList.xml");
-            if (!fileExists)
+
+            if (!File.Exists($"{Environment.CurrentDirectory}\\M_IList.xml"))
             {
                 M_I.M_IList = new List<M_I>();
             }
             else
             {
-                M_I.M_IList = Seriazation.DeserializeToObject<List<M_I>>($"{Environment.CurrentDirectory}\\M_IList.xml");
+                //M_I.M_IList = Seriazation.DeserializeToObject<List<M_I>>($"{Environment.CurrentDirectory}\\M_IList.xml");
+                M_I.M_IList = new List<M_I>();
+                M_I m_I = new M_I();
+                Type[] types = new Type[] { typeof(string), typeof(byte[]), typeof(bool), typeof(int) };
+                while (Serialization.LoadFromDocumentFormat<M_I>(m_I, types, $"{Environment.CurrentDirectory}\\M_IList.xml") != null)
+                {
+                    M_I.M_IList.Add(Serialization.LoadFromDocumentFormat<M_I>(m_I, types, $"{Environment.CurrentDirectory}\\M_IList.xml"));
+                }
             }
             ctlGrid.ItemsSource = M_I.M_IList;
         }
@@ -50,7 +57,12 @@ namespace StoreofM_I
 
         private void NeedSerializeData(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Seriazation.SerializeToXml<List<M_I>>(M_I.M_IList, $"{Environment.CurrentDirectory}\\PersonsList.xml");
+            //Seriazation.SerializeToXml<List<M_I>>(M_I.M_IList, $"{Environment.CurrentDirectory}\\PersonsList.xml");
+            Type[] types = new Type[] { typeof(string), typeof(byte[]), typeof(bool), typeof(int) };
+            foreach (M_I item in M_I.M_IList)
+            {
+                Serialization.SaveToDocumentFormat<M_I>(item, types, $"{Environment.CurrentDirectory}\\PersonsList.xml");
+            }
         }
     }
 }

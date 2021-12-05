@@ -1,9 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Windows.Media.Imaging;
+using System.Xml.Serialization;
 
 namespace StoreofM_I
 {
+    [XmlRootAttribute("M_I", Namespace = "StoreofM_I")]
     public class M_I
     {
         private string ownerName;
@@ -49,6 +54,7 @@ namespace StoreofM_I
         }
 
         private Bitmap bitmap;
+        [XmlIgnoreAttribute()]
         public Bitmap Bitmap
         {
             get { return bitmap; }
@@ -96,6 +102,30 @@ namespace StoreofM_I
         public bool WhereProdDate(string phrase)
         {
             return produsingDate.Contains(phrase);
+        }
+        [XmlElementAttribute("Picture")]
+        public byte[]? PictureByteArray
+        {
+            get
+            {
+                if (Bitmap != null)
+                {
+                    TypeConverter BitmapConverter =
+                         TypeDescriptor.GetConverter(Bitmap.GetType());
+                    return (byte[]?)
+                         BitmapConverter.ConvertTo(Bitmap, typeof(byte[]));
+                }
+                else
+                    return null;
+            }
+
+            set
+            {
+                if (value != null)
+                    Bitmap = new Bitmap(new MemoryStream(value));
+                else
+                    Bitmap = null;
+            }
         }
     }
 }
