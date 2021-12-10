@@ -51,6 +51,7 @@ namespace StoreofM_I.Windows
             {
                 Filter = "Images | *.bmp; *.png; *.jpg; *.JPEG"
             };
+
             if (openFileDialog.ShowDialog() == true)
             {
                 string fileName = openFileDialog.FileName;

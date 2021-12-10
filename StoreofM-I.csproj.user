@@ -13,6 +13,9 @@
     <Compile Update="Windows\DeleteM_IWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\ModifyM_IWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
@@ -22,6 +25,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\DeleteM_IWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\ModifyM_IWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

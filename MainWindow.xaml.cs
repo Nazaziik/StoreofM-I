@@ -44,7 +44,20 @@ namespace StoreofM_I
 
         private void ModifyButoon(object sender, RoutedEventArgs e)
         {
+            if (ctlGrid.SelectedItem != null)
+            {
+                ModifyM_IWindow modifyM_I = new ModifyM_IWindow();
+                M_I tempM_I = new M_I((M_I)ctlGrid.SelectedItem);
+                modifyM_I.DataContext = tempM_I;
+                modifyM_I.ShowDialog();
 
+                if (modifyM_I.ModifySubmitted)
+                {
+                    int index = M_I.M_IList.IndexOf((M_I)ctlGrid.SelectedItem);
+                    M_I.M_IList[index] = tempM_I;
+                }
+                ctlGrid.Items.Refresh();
+            }
         }
     }
 }

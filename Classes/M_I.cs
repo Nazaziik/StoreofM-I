@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Windows.Media.Imaging;
 using System.Xml.Serialization;
@@ -107,8 +106,6 @@ namespace StoreofM_I
             this._produsingDate = produsingDate;
             this._typeOf = tyOf;
             this._image = bitmap;
-
-            M_IList.Add(this);
         }
 
         public M_I() { }

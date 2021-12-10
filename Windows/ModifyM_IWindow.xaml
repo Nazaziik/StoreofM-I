@@ -1,0 +1,73 @@
+﻿<Window x:Class="StoreofM_I.Windows.ModifyM_IWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StoreofM_I.Windows.Controls"
+        mc:Ignorable="d"
+        Title="ModifyM_IWindow" Height="600" Width="400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.6*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <!--Name-->
+        <TextBlock Grid.Column="0" Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center">Owner Name</TextBlock>
+        <TextBox x:Name="NameBox" Grid.Column="1" Grid.Row="0" TextAlignment="Center" VerticalAlignment="Center" Margin = "10px" Text="{Binding OwnerName, Mode=TwoWay}"/>
+
+        <!--Producent-->
+        <TextBlock Grid.Column="0" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center">Producent</TextBlock>
+        <TextBox x:Name="SurnameBox" Grid.Column="1" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Center" Margin = "10px" Text="{Binding Producent, Mode=TwoWay}"/>
+
+        <!--Age-->
+        <TextBlock Grid.Column="0" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center">Age</TextBlock>
+        <local:AgeControl x:Name="AgeBox" Grid.Column="1" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center" Margin = "10px" Text="{Binding Age, Mode=TwoWay}"/>
+
+        <!--SerialNumber-->
+        <TextBlock Grid.Column="0" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center">SerialNumber</TextBlock>
+        <local:SerialNumberControl x:Name="PeselBox" Grid.Column="1" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center" Margin = "10px" Text="{Binding SerialNumber, Mode=TwoWay}"/>
+
+        <!--ProdusingDate-->
+        <TextBlock Grid.Column="0" Grid.Row="4" TextAlignment="Center" VerticalAlignment="Center">Produsing Date</TextBlock>
+        <DatePicker x:Name="DataPicker" Grid.Column="1" Grid.Row="4" Margin="20px" Text="{Binding ProdusingDate, Mode=TwoWay}"/>
+
+        <!--Type-->
+        <TextBlock Grid.Column="0" Grid.Row="5" TextAlignment="Center" VerticalAlignment="Center">Type</TextBlock>
+        <TextBox x:Name="GenderBox" Grid.Column="1" Grid.Row="5" TextAlignment="Center" VerticalAlignment="Center" Margin = "10px" Text="{Binding TypeOf, Mode=TwoWay}"/>
+
+        <!-- Image -->
+        <TextBlock Grid.Column="0" Grid.Row="6" TextAlignment="Center" VerticalAlignment="Center">Image</TextBlock>
+        <Grid Grid.Column="1" Grid.Row="6" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Image -->
+            <Image x:Name="imgDynamic" Stretch="Uniform" Source="{Binding Image, Mode=TwoWay}"/>
+            
+            <!-- Add Image Button -->
+            <Button x:Name="ImageButton" Grid.Column="1" VerticalAlignment="Center" Margin = "20px 10px 20px 10px" Click="ImageButton_Click">Change Image</Button>
+            
+        </Grid>
+
+        <!-- Cancel Button -->
+        <Button Grid.Column="0" Grid.Row="7" Click="CancelButton_Click">Cancel</Button>
+
+        <!-- Modify Button -->
+        <Button Grid.Column="1" Grid.Row="7" Click="SubmitButton_Click">Modify</Button>
+        
+    </Grid>
+</Window>
