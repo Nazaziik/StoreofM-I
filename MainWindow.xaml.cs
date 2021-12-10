@@ -1,18 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using StoreofM_I.Windows;
 
 namespace StoreofM_I
@@ -29,8 +18,7 @@ namespace StoreofM_I
             }
             else
             {
-                //M_I.M_IList = Seriazation.DeserializeToObject<List<M_I>>($"{Environment.CurrentDirectory}\\M_IList.xml");
-                M_I.M_IList = new List<M_I>() { Serialization.LoadFromDocumentFormat<M_I>(new M_I(), M_I.types, $"{Environment.CurrentDirectory}\\M_IList.xml") };
+                M_I.M_IList = Serialization.DeserializeToObject<List<M_I>>($"{Environment.CurrentDirectory}\\M_IList.xml");
             }
             ctlGrid.ItemsSource = M_I.M_IList;
         }
@@ -49,13 +37,14 @@ namespace StoreofM_I
             ctlGrid.Items.Refresh();
         }
 
-        private void NeedSerializeData(object sender, System.ComponentModel.CancelEventArgs e)
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //Seriazation.SerializeToXml<List<M_I>>(M_I.M_IList, $"{Environment.CurrentDirectory}\\PersonsList.xml");
-            foreach (M_I item in M_I.M_IList)
-            {
-                Serialization.SaveToDocumentFormat<M_I>(item, M_I.types, $"{Environment.CurrentDirectory}\\PersonsList.xml");
-            }
+            Serialization.SerializeToXml<List<M_I>>(M_I.M_IList, $"{Environment.CurrentDirectory}\\M_IList.xml");
+        }
+
+        private void ModifyButoon(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

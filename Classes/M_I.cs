@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Media.Imaging;
@@ -8,71 +6,107 @@ using System.Xml.Serialization;
 
 namespace StoreofM_I
 {
-    [XmlRootAttribute("M_I", Namespace = "StoreofM_I")]
     public class M_I
     {
-        private string ownerName;
+        private string _ownerName;
         public string OwnerName
         {
-            get { return ownerName; }
-            set { ownerName = value; }
+            get { return _ownerName; }
+            set { _ownerName = value; }
         }
 
-        private string producent;
+        private string _producent;
         public string Producent
         {
-            get { return producent; }
-            set { producent = value; }
+            get { return _producent; }
+            set { _producent = value; }
         }
 
-        private int? age;
+        private int? _age;
         public int? Age
         {
-            get { return age; }
-            set { age = value; }
+            get { return _age; }
+            set { _age = value; }
         }
 
-        private string serialNumber;
+        private string _serialNumber;
         public string SerialNumber
         {
-            get { return serialNumber; }
-            set { serialNumber = value; }
+            get { return _serialNumber; }
+            set { _serialNumber = value; }
         }
 
-        private string produsingDate;
+        private string _produsingDate;
         public string ProdusingDate
         {
-            get { return produsingDate; }
-            set { produsingDate = value; }
+            get { return _produsingDate; }
+            set { _produsingDate = value; }
         }
 
-        private string typeOf;
+        private string _typeOf;
         public string TypeOf
         {
-            get { return typeOf; }
-            set { typeOf = value; }
+            get { return _typeOf; }
+            set { _typeOf = value; }
         }
 
-        private Bitmap bitmap;
-        [XmlIgnoreAttribute()]
-        public Bitmap Bitmap
+        private BitmapSource _image;
+        [XmlIgnore]
+        public BitmapSource Image
         {
-            get { return bitmap; }
-            set { bitmap = value; }
+            get { return _image; }
+            set { _image = value; }
+        }
+
+        [XmlElement("Image")]
+        public byte[] ImageBuffer
+        {
+            get
+            {
+                byte[] imageBuffer = null;
+
+                if (Image != null)
+                {
+                    using (var stream = new MemoryStream())
+                    {
+                        var encoder = new PngBitmapEncoder();
+                        encoder.Frames.Add(BitmapFrame.Create(Image));
+                        encoder.Save(stream);
+                        imageBuffer = stream.ToArray();
+                    }
+                }
+
+                return imageBuffer;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    Image = null;
+                }
+                else
+                {
+                    using (var stream = new MemoryStream(value))
+                    {
+                        var decoder = BitmapDecoder.Create(stream,
+                            BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
+                        Image = decoder.Frames[0];
+                    }
+                }
+            }
         }
 
         static public List<M_I> M_IList;
-        public static Type[] types = new Type[] { typeof(string), typeof(byte[]), typeof(bool), typeof(int) };
 
-        public M_I(string ownerName, string producent, int age, string serialNumber, string produsingDate, string tyOf, Bitmap bitmap)
+        public M_I(string ownerName, string producent, int age, string serialNumber, string produsingDate, string tyOf, BitmapSource bitmap)
         {
-            this.ownerName = ownerName;
-            this.producent = producent;
-            this.age = age;
-            this.serialNumber = serialNumber;
-            this.produsingDate = produsingDate;
-            this.typeOf = tyOf;
-            this.bitmap = bitmap;
+            this._ownerName = ownerName;
+            this._producent = producent;
+            this._age = age;
+            this._serialNumber = serialNumber;
+            this._produsingDate = produsingDate;
+            this._typeOf = tyOf;
+            this._image = bitmap;
 
             M_IList.Add(this);
         }
@@ -81,52 +115,28 @@ namespace StoreofM_I
 
         public M_I(M_I MusicalInstrument)
         {
-            this.ownerName = MusicalInstrument.ownerName;
-            this.producent = MusicalInstrument.producent;
-            this.age = MusicalInstrument.age;
-            this.serialNumber = MusicalInstrument.serialNumber;
-            this.produsingDate = MusicalInstrument.produsingDate;
-            this.typeOf = MusicalInstrument.typeOf;
-            this.bitmap = MusicalInstrument.bitmap;
+            this._ownerName = MusicalInstrument._ownerName;
+            this._producent = MusicalInstrument._producent;
+            this._age = MusicalInstrument._age;
+            this._serialNumber = MusicalInstrument._serialNumber;
+            this._produsingDate = MusicalInstrument._produsingDate;
+            this._typeOf = MusicalInstrument._typeOf;
+            this._image = MusicalInstrument._image;
         }
 
         public bool WhereProducent(string phrase)
         {
-            return producent.Contains(phrase);
+            return _producent.Contains(phrase);
         }
 
         public bool WhereSerNum(string phrase)
         {
-            return serialNumber.Contains(phrase);
+            return _serialNumber.Contains(phrase);
         }
 
         public bool WhereProdDate(string phrase)
         {
-            return produsingDate.Contains(phrase);
-        }
-        [XmlElementAttribute("Picture")]
-        public byte[]? PictureByteArray
-        {
-            get
-            {
-                if (Bitmap != null)
-                {
-                    TypeConverter BitmapConverter =
-                         TypeDescriptor.GetConverter(Bitmap.GetType());
-                    return (byte[]?)
-                         BitmapConverter.ConvertTo(Bitmap, typeof(byte[]));
-                }
-                else
-                    return null;
-            }
-
-            set
-            {
-                if (value != null)
-                    Bitmap = new Bitmap(new MemoryStream(value));
-                else
-                    Bitmap = null;
-            }
+            return _produsingDate.Contains(phrase);
         }
     }
 }

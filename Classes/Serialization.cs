@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.IO.IsolatedStorage;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Xml.Serialization;
 
 namespace StoreofM_I
 {
-    internal class Serialization
+    public class Serialization
     {
         public static T DeserializeToObject<T>(string filepath) where T : class
         {
@@ -29,41 +23,6 @@ namespace StoreofM_I
             {
                 xmlSerializer.Serialize(writer, anyobject);
             }
-        }
-        /////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public static T LoadFromDocumentFormat<T>(T serializableObject, Type[] extraTypes, string path)
-        {
-            using (StreamReader streamReader = new StreamReader(path))
-            {
-                XmlSerializer xmlSerializer = CreateXmlSerializer(serializableObject, extraTypes);
-                serializableObject = (T)xmlSerializer.Deserialize(streamReader);
-            }
-
-            return serializableObject;
-        }
-
-        public static void SaveToDocumentFormat<T>(T serializableObject, Type[] extraTypes, string path)
-        {
-            using (StreamWriter textWriter = File.CreateText(path))
-            {
-                XmlSerializer xmlSerializer = CreateXmlSerializer(serializableObject, extraTypes);
-                xmlSerializer.Serialize(textWriter, serializableObject);
-            }
-        }
-
-        public static XmlSerializer CreateXmlSerializer<T>(T serializableObject, Type[] extraTypes)
-        {
-            Type ObjectType = serializableObject.GetType();
-
-            XmlSerializer xmlSerializer = null;
-
-            if (extraTypes != null)
-                xmlSerializer = new XmlSerializer(ObjectType, extraTypes);
-            else
-                xmlSerializer = new XmlSerializer(ObjectType);
-
-            return xmlSerializer;
         }
     }
 }

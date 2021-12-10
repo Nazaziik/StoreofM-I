@@ -1,19 +1,8 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace StoreofM_I.Windows
 {
@@ -24,7 +13,7 @@ namespace StoreofM_I.Windows
             InitializeComponent();
             this.DataContext = m_i;
         }
-        readonly M_I m_i = new M_I();
+        private M_I m_i = new M_I();
 
         private void SubmitAddButton(object sender, RoutedEventArgs e)
         {
@@ -67,8 +56,6 @@ namespace StoreofM_I.Windows
                 string fileName = openFileDialog.FileName;
                 Uri fileUri = new Uri(fileName);
                 imgDynamic.Source = new BitmapImage(fileUri);
-                Bitmap bitmap = new Bitmap(fileName);
-                m_i.Bitmap = bitmap;
             }
         }
     }

@@ -33,7 +33,7 @@
         <!--Age-->
         <TextBlock Grid.Column="0" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center">Age</TextBlock>
         <local:AgeControl x:Name="AgeBox" Grid.Column="1" Grid.Row="2" TextAlignment="Center" VerticalAlignment="Center" Margin = "10px" Text="{Binding Age}"/>
-
+    
         <!--SerialNumber-->
         <TextBlock Grid.Column="0" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center">SerialNumber</TextBlock>
         <local:SerialNumberControl x:Name="PeselBox" Grid.Column="1" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center" Margin = "10px" Text="{Binding SerialNumber}"/>
@@ -54,7 +54,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             
-            <Image x:Name="imgDynamic" Stretch="Fill"/>
+            <Image x:Name="imgDynamic" Stretch="Uniform" Source="{Binding Image, Mode=TwoWay}"/>
             <Button x:Name="ImageButton" Grid.Column="1" VerticalAlignment="Center" Margin = "20px 10px 20px 10px" Click="OpenFileDialogButton">Add Image</Button>
         </Grid>
         
