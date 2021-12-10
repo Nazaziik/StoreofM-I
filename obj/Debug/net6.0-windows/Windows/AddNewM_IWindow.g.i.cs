@@ -117,7 +117,7 @@ namespace StoreofM_I.Windows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/StoreofM-I;component/windows/addnewm_iwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/StoreofM-I;V1.0.0.0;component/windows/addnewm_iwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Windows\AddNewM_IWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
