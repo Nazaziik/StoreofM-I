@@ -41,7 +41,7 @@
 
         <!--ProdusingDate-->
         <TextBlock Grid.Column="0" Grid.Row="4" TextAlignment="Center" VerticalAlignment="Center">Produsing Date</TextBlock>
-        <DatePicker x:Name="DataPicker" Grid.Column="1" Grid.Row="4" Margin="20px" Text="{Binding ProdusingDate}"/>
+        <DatePicker x:Name="DataPicker" Grid.Column="1" Grid.Row="4" Margin="20px" SelectedDate="{Binding ProdusingDate}" />
 
         <!--Type-->
         <TextBlock Grid.Column="0" Grid.Row="5" TextAlignment="Center" VerticalAlignment="Center">Type</TextBlock>

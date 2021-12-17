@@ -25,26 +25,46 @@
 
         <DataGrid  Margin="10px 10px 10px 0px" x:Name="dltGrid" AutoGenerateColumns="False" Grid.RowSpan="2" Grid.Row="0" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Width="0.8*" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Name" Width="0.8*" Binding="{Binding OwnerName}"/>
                 <DataGridTextColumn Header="Producent" Width="1*" Binding="{Binding Producent}"/>
                 <DataGridTextColumn Header="SerialNumber" Width="1*" Binding="{Binding SerialNumber}"/>
-                <DataGridTextColumn Header="Produsing Date" Width="0.8*" Binding="{Binding ProdusingDate}"/>
                 <DataGridTextColumn Header="Type" Width="0.6*" Binding="{Binding TypeOf}"/>
             </DataGrid.Columns>
         </DataGrid>
+
+        <!-- Producent Label -->
         <Label Grid.Row="2" Margin="200px 14px 200px 7px" HorizontalContentAlignment="Center">Producent</Label>
-        <TextBox x:Name="SurenameDltBox" Grid.Row="3" Margin="160px 8px 160px 17px" TextChanged="FilterData_textChanged"/>
+
+        <!-- Serial Number Label -->
         <Label Grid.Row="4" Margin="200px 14px 200px 7px" HorizontalContentAlignment="Center">SerialNumber</Label>
+
+        <!-- Type Label -->
+        <Label Grid.Row="6" Margin="198px 14px 198px 7px" HorizontalContentAlignment="Center">Type</Label>
+
+        <!-- Producent TextBox -->
+        <TextBox x:Name="SurenameDltBox" Grid.Row="3" Margin="160px 8px 160px 17px" TextChanged="FilterData_textChanged"/>
+
+        <!-- Serial Number TextBox -->
         <TextBox x:Name="PeselDltBox" Grid.Row="5" Margin="160px 10px 160px 15px" TextChanged="FilterData_textChanged"/>
-        <Label Grid.Row="6" Margin="198px 14px 198px 7px" HorizontalContentAlignment="Center">Produsing Date</Label>
+
+        <!-- Type TextBox -->
         <TextBox x:Name="DoBDltDatePicker" Grid.Row="7" Margin="160px 7px 160px 18px" TextChanged="FilterData_textChanged"/>
+
+        <!-- Buttons Grid -->
         <Grid Grid.Row="8">
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
+
+            <!-- Cancel Button -->
             <Button Grid.Column="0" Margin="40px 5px 10px 10px" Click="CancelDeleteButton_click">Cancel</Button>
+
+            <!-- Submit Button -->
             <Button Grid.Column="1" Margin="10px 5px 40px 10px" Click="SubmitDeleteButton_click">Delete</Button>
+
         </Grid>
+        
     </Grid>
 </Window>

@@ -23,12 +23,12 @@
             <DataGrid.Columns>
                 
                 <!-- Image Column -->
-                <DataGridTemplateColumn Header="Photo" Width="0.5*">
+                <DataGridTemplateColumn Header="Photo" Width="50">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             
                             <!-- Image -->
-                            <Image Source="{Binding Image}" Stretch="Fill"/>
+                            <Image Source="{Binding Image}" Stretch="Uniform" Height="50"/>
                             
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

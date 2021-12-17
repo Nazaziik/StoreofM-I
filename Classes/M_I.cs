@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Media.Imaging;
 using System.Xml.Serialization;
@@ -35,8 +36,8 @@ namespace StoreofM_I
             set { _serialNumber = value; }
         }
 
-        private string _produsingDate;
-        public string ProdusingDate
+        private DateTime? _produsingDate;
+        public DateTime? ProdusingDate
         {
             get { return _produsingDate; }
             set { _produsingDate = value; }
@@ -49,20 +50,20 @@ namespace StoreofM_I
             set { _typeOf = value; }
         }
 
-        private BitmapSource _image;
+        private BitmapSource? _image;
         [XmlIgnore]
-        public BitmapSource Image
+        public BitmapSource? Image
         {
             get { return _image; }
             set { _image = value; }
         }
 
         [XmlElement("Image")]
-        public byte[] ImageBuffer
+        public byte[]? ImageBuffer
         {
             get
             {
-                byte[] imageBuffer = null;
+                byte[]? imageBuffer = null;
 
                 if (Image != null)
                 {
@@ -95,9 +96,9 @@ namespace StoreofM_I
             }
         }
 
-        static public List<M_I> M_IList;
+        static public List<M_I>? M_IList;
 
-        public M_I(string ownerName, string producent, int age, string serialNumber, string produsingDate, string tyOf, BitmapSource bitmap)
+        public M_I(string ownerName, string producent, int age, string serialNumber, DateTime produsingDate, string tyOf)
         {
             this._ownerName = ownerName;
             this._producent = producent;
@@ -105,7 +106,6 @@ namespace StoreofM_I
             this._serialNumber = serialNumber;
             this._produsingDate = produsingDate;
             this._typeOf = tyOf;
-            this._image = bitmap;
         }
 
         public M_I() { }
@@ -123,17 +123,17 @@ namespace StoreofM_I
 
         public bool WhereProducent(string phrase)
         {
-            return _producent.Contains(phrase);
+            return Producent.Contains(phrase);
         }
 
         public bool WhereSerNum(string phrase)
         {
-            return _serialNumber.Contains(phrase);
+            return SerialNumber.Contains(phrase);
         }
 
-        public bool WhereProdDate(string phrase)
+        public bool WhereType(string phrase)
         {
-            return _produsingDate.Contains(phrase);
+            return TypeOf.Contains(phrase);
         }
     }
 }

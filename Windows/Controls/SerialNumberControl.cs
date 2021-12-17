@@ -13,7 +13,7 @@ namespace StoreofM_I.Windows.Controls
             this.HorizontalContentAlignment = System.Windows.HorizontalAlignment.Center;
         }
 
-        private Regex mvarRegex = new Regex(@"\b\d{1,11}\b");
+        private Regex mvarRegex = new Regex(@"\b\d{1,12}\b");
 
         private void SerialNumberControl_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {

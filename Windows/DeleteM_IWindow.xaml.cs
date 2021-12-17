@@ -51,7 +51,7 @@ namespace StoreofM_I.Windows
             }
             else if (SurenameDltBox.Text == "" && PeselDltBox.Text == "" && DoBDltDatePicker.Text != "")
             {
-                List<M_I> tempFilterList = (List<M_I>)M_I.M_IList.Where(a => a.WhereProdDate(DoBDltDatePicker.Text)).ToList();
+                List<M_I> tempFilterList = (List<M_I>)M_I.M_IList.Where(a => a.WhereType(DoBDltDatePicker.Text)).ToList();
                 dltGrid.ItemsSource = tempFilterList;
             }
             else if (SurenameDltBox.Text != "" && PeselDltBox.Text != "" && DoBDltDatePicker.Text == "")
@@ -61,17 +61,17 @@ namespace StoreofM_I.Windows
             }
             else if (SurenameDltBox.Text == "" && PeselDltBox.Text != "" && DoBDltDatePicker.Text != "")
             {
-                List<M_I> tempFilterList = (List<M_I>)M_I.M_IList.Where(a => a.WhereSerNum(PeselDltBox.Text) && a.WhereProdDate(DoBDltDatePicker.Text)).ToList();
+                List<M_I> tempFilterList = (List<M_I>)M_I.M_IList.Where(a => a.WhereSerNum(PeselDltBox.Text) && a.WhereType(DoBDltDatePicker.Text)).ToList();
                 dltGrid.ItemsSource = tempFilterList;
             }
             else if (SurenameDltBox.Text != "" && PeselDltBox.Text == "" && DoBDltDatePicker.Text != "")
             {
-                List<M_I> tempFilterList = (List<M_I>)M_I.M_IList.Where(a => a.WhereProducent(SurenameDltBox.Text) && a.WhereProdDate(DoBDltDatePicker.Text)).ToList();
+                List<M_I> tempFilterList = (List<M_I>)M_I.M_IList.Where(a => a.WhereProducent(SurenameDltBox.Text) && a.WhereType(DoBDltDatePicker.Text)).ToList();
                 dltGrid.ItemsSource = tempFilterList;
             }
             else if (SurenameDltBox.Text != "" && PeselDltBox.Text != "" && DoBDltDatePicker.Text != "")
             {
-                List<M_I> tempFilterList = (List<M_I>)M_I.M_IList.Where(a => a.WhereProducent(SurenameDltBox.Text) && a.WhereSerNum(PeselDltBox.Text) && a.WhereProdDate(DoBDltDatePicker.Text)).ToList();
+                List<M_I> tempFilterList = (List<M_I>)M_I.M_IList.Where(a => a.WhereProducent(SurenameDltBox.Text) && a.WhereSerNum(PeselDltBox.Text) && a.WhereType(DoBDltDatePicker.Text)).ToList();
                 dltGrid.ItemsSource = tempFilterList;
             }
         }
