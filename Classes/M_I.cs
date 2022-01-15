@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Windows.Media.Imaging;
 using System.Xml.Serialization;
 
@@ -98,7 +99,7 @@ namespace StoreofM_I
 
         static public List<M_I>? M_IList;
 
-        public M_I(string ownerName, string producent, int age, string serialNumber, DateTime produsingDate, string tyOf)
+        public M_I(string ownerName, string producent, int age, string serialNumber, DateTime produsingDate, string tyOf, string image)
         {
             this._ownerName = ownerName;
             this._producent = producent;
@@ -106,19 +107,20 @@ namespace StoreofM_I
             this._serialNumber = serialNumber;
             this._produsingDate = produsingDate;
             this._typeOf = tyOf;
+            ImageBuffer = Encoding.ASCII.GetBytes(image);
         }
 
         public M_I() { }
 
         public M_I(M_I MusicalInstrument)
         {
-            this._ownerName = MusicalInstrument._ownerName;
-            this._producent = MusicalInstrument._producent;
-            this._age = MusicalInstrument._age;
-            this._serialNumber = MusicalInstrument._serialNumber;
-            this._produsingDate = MusicalInstrument._produsingDate;
-            this._typeOf = MusicalInstrument._typeOf;
-            this._image = MusicalInstrument._image;
+            this._ownerName = MusicalInstrument.OwnerName;
+            this._producent = MusicalInstrument.Producent;
+            this._age = MusicalInstrument.Age;
+            this._serialNumber = MusicalInstrument.SerialNumber;
+            this._produsingDate = MusicalInstrument.ProdusingDate;
+            this._typeOf = MusicalInstrument.TypeOf;
+            this._image = MusicalInstrument.Image;
         }
 
         public bool WhereProducent(string phrase)
