@@ -7,18 +7,20 @@ namespace StoreofM_I.Windows
 {
     public partial class AddNewM_I : Window
     {
+        private M_I m_i = new M_I();
+
         public AddNewM_I()
         {
             InitializeComponent();
             this.DataContext = m_i;
         }
-        private M_I m_i = new M_I();
 
         private void SubmitAddButton(object sender, RoutedEventArgs e)
         {
             if (M_I.M_IList.Count != 0)
             {
                 bool samePerson = false;
+
                 for (int i = 0; i < M_I.M_IList.Count; i++)
                 {
                     if (M_I.M_IList[i].SerialNumber == m_i.SerialNumber)
@@ -29,14 +31,19 @@ namespace StoreofM_I.Windows
                     }
                 }
                 if (!samePerson)
-                {
-                    M_I.M_IList.Add(m_i);
-                }
+                    AddNewInstrument();
             }
             else
-                M_I.M_IList.Add(m_i);
+                AddNewInstrument();
 
             this.Close();
+        }
+
+        private void AddNewInstrument()
+        {
+            M_I.M_IList.Add(m_i);
+            //DataBaseConnection dataBaseConnection = new DataBaseConnection(@"Data Source=DESKTOP-JVU6NMI\\SQLEXPRESS;Initial Catalog=M_IDataBase;User ID=sa;Password=asd");
+            //dataBaseConnection.InsertNewMIi(m_i);
         }
 
         private void CancelAddButton(object sender, RoutedEventArgs e)

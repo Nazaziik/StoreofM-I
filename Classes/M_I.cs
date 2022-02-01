@@ -37,8 +37,8 @@ namespace StoreofM_I
             set { _serialNumber = value; }
         }
 
-        private DateTime? _produsingDate;
-        public DateTime? ProdusingDate
+        private DateTime _produsingDate;
+        public DateTime ProdusingDate
         {
             get { return _produsingDate; }
             set { _produsingDate = value; }
@@ -99,28 +99,28 @@ namespace StoreofM_I
 
         static public List<M_I>? M_IList;
 
-        public M_I(string ownerName, string producent, int age, string serialNumber, DateTime produsingDate, string tyOf, string image)
+        public M_I() { }
+
+        public M_I(string ownerName, string producent, int age, string serialNumber, DateTime produsingDate, string typeOf, string image)
         {
-            this._ownerName = ownerName;
-            this._producent = producent;
-            this._age = age;
-            this._serialNumber = serialNumber;
-            this._produsingDate = produsingDate;
-            this._typeOf = tyOf;
+            _ownerName = ownerName;
+            _producent = producent;
+            _age = age;
+            _serialNumber = serialNumber;
+            _produsingDate = produsingDate;
+            _typeOf = typeOf;
             ImageBuffer = Encoding.ASCII.GetBytes(image);
         }
 
-        public M_I() { }
-
         public M_I(M_I MusicalInstrument)
         {
-            this._ownerName = MusicalInstrument.OwnerName;
-            this._producent = MusicalInstrument.Producent;
-            this._age = MusicalInstrument.Age;
-            this._serialNumber = MusicalInstrument.SerialNumber;
-            this._produsingDate = MusicalInstrument.ProdusingDate;
-            this._typeOf = MusicalInstrument.TypeOf;
-            this._image = MusicalInstrument.Image;
+            _ownerName = MusicalInstrument.OwnerName;
+            _producent = MusicalInstrument.Producent;
+            _age = MusicalInstrument.Age;
+            _serialNumber = MusicalInstrument.SerialNumber;
+            _produsingDate = MusicalInstrument.ProdusingDate;
+            _typeOf = MusicalInstrument.TypeOf;
+            _image = MusicalInstrument.Image;
         }
 
         public bool WhereProducent(string phrase)

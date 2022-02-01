@@ -17,14 +17,21 @@ namespace StoreofM_I.Windows
         private void SubmitDeleteButton_click(object sender, RoutedEventArgs e)
         {
             int index = M_I.M_IList.IndexOf(dltGrid.SelectedItem as M_I);
+
             if (index > -1)
             {
+                M_I tempMI = M_I.M_IList[index];
+                //DataBaseConnection dataBaseConnection = new DataBaseConnection(@"Data Source=DESKTOP-JVU6NMI\\SQLEXPRESS;Initial Catalog=M_IDataBase;User ID=asds;Password=asd");
+                //dataBaseConnection.DeleteElement(tempMI);
                 M_I.M_IList.RemoveAt(index);
             }
+
             SurenameDltBox.Text = String.Empty;
             PeselDltBox.Text = String.Empty;
             DoBDltDatePicker.Text = String.Empty;
+
             dltGrid.ItemsSource = M_I.M_IList;
+
             dltGrid.Items.Refresh();
         }
 
