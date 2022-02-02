@@ -1,4 +1,3 @@
-D:\Learn\2 Programowanie\Programs\StoreofM-I\obj\Debug\netcoreapp3.1\StoreofM-I.csproj.AssemblyReference.cache
 D:\Learn\2 Programowanie\Programs\StoreofM-I\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 D:\Learn\2 Programowanie\Programs\StoreofM-I\obj\Debug\netcoreapp3.1\Windows\AddNewM_IWindow.g.cs
 D:\Learn\2 Programowanie\Programs\StoreofM-I\obj\Debug\netcoreapp3.1\Windows\DeleteM_IWindow.g.cs
@@ -92,3 +91,4 @@ D:\Learn\2 Programowanie\Programs\StoreofM-I\obj\Debug\netcoreapp3.1\StoreofM-I.
 D:\Learn\2 Programowanie\Programs\StoreofM-I\obj\Debug\netcoreapp3.1\StoreofM-I.dll
 D:\Learn\2 Programowanie\Programs\StoreofM-I\obj\Debug\netcoreapp3.1\StoreofM-I.pdb
 D:\Learn\2 Programowanie\Programs\StoreofM-I\obj\Debug\netcoreapp3.1\StoreofM-I.genruntimeconfig.cache
+D:\Learn\2 Programowanie\Programs\StoreofM-I\obj\Debug\netcoreapp3.1\StoreofM-I.csproj.AssemblyReference.cache

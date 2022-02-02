@@ -12,16 +12,8 @@ namespace StoreofM_I
         {
             InitializeComponent();
 
-            if (!File.Exists($"{Environment.CurrentDirectory}\\M_IList.xml"))
-            {
-                M_I.M_IList = new List<M_I>();
-                //DataBaseConnection dataBaseConnection = new DataBaseConnection(@"Data Source=DESKTOP-JVU6NMI\\SQLEXPRESS;Initial Catalog=M_IDataBase;User ID=asds;Password=asd");
-                //M_I.M_IList = dataBaseConnection.SelectAll();
-            }
-            else
-            {
-                M_I.M_IList = Serialization.DeserializeToObject<List<M_I>>($"{Environment.CurrentDirectory}\\M_IList.xml");
-            }
+            DataBaseConnection dataBaseConnection = new DataBaseConnection("Data Source=DESKTOP-JVU6NMI\\SQLEXPRESS;Initial Catalog=M_IDataBase;User ID=asds;Password=asd");
+            M_I.M_IList = dataBaseConnection.SelectAll();
 
             ctlGrid.ItemsSource = M_I.M_IList;
 
@@ -77,8 +69,8 @@ namespace StoreofM_I
                 if (modifyM_I.ModifySubmitted)
                 {
                     int index = M_I.M_IList.IndexOf((M_I)ctlGrid.SelectedItem);
-                    //DataBaseConnection dataBaseConnection = new DataBaseConnection(@"Data Source=DESKTOP-JVU6NMI\\SQLEXPRESS;Initial Catalog=M_IDataBase;User ID=asds;Password=asd");
-                    //dataBaseConnection.ModifyElement(tempM_I);
+                    DataBaseConnection dataBaseConnection = new DataBaseConnection("Data Source=DESKTOP-JVU6NMI\\SQLEXPRESS;Initial Catalog=M_IDataBase;User ID=asds;Password=asd");
+                    dataBaseConnection.ChangeTable(tempM_I, 2);
                     M_I.M_IList[index] = tempM_I;
                 }
                 ctlGrid.Items.Refresh();

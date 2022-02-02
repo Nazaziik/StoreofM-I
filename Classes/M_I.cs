@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Windows.Media.Imaging;
@@ -41,7 +43,10 @@ namespace StoreofM_I
         public DateTime ProdusingDate
         {
             get { return _produsingDate; }
-            set { _produsingDate = value; }
+            set
+            {
+                _produsingDate = new DateTime(value.Year, value.Month, value.Day);
+            }
         }
 
         private string _typeOf;
@@ -89,8 +94,7 @@ namespace StoreofM_I
                 {
                     using (var stream = new MemoryStream(value))
                     {
-                        var decoder = BitmapDecoder.Create(stream,
-                            BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
+                        var decoder = BitmapDecoder.Create(stream, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
                         Image = decoder.Frames[0];
                     }
                 }
@@ -101,7 +105,7 @@ namespace StoreofM_I
 
         public M_I() { }
 
-        public M_I(string ownerName, string producent, int age, string serialNumber, DateTime produsingDate, string typeOf, string image)
+        public M_I(string ownerName, string producent, int age, string serialNumber, DateTime produsingDate, string typeOf/*, string image*/)
         {
             _ownerName = ownerName;
             _producent = producent;
@@ -109,7 +113,7 @@ namespace StoreofM_I
             _serialNumber = serialNumber;
             _produsingDate = produsingDate;
             _typeOf = typeOf;
-            ImageBuffer = Encoding.ASCII.GetBytes(image);
+            //ImageBuffer = Encoding.ASCII.GetBytes(image);
         }
 
         public M_I(M_I MusicalInstrument)

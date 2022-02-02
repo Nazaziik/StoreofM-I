@@ -42,8 +42,8 @@ namespace StoreofM_I.Windows
         private void AddNewInstrument()
         {
             M_I.M_IList.Add(m_i);
-            //DataBaseConnection dataBaseConnection = new DataBaseConnection(@"Data Source=DESKTOP-JVU6NMI\\SQLEXPRESS;Initial Catalog=M_IDataBase;User ID=sa;Password=asd");
-            //dataBaseConnection.InsertNewMIi(m_i);
+            DataBaseConnection dataBaseConnection = new DataBaseConnection("Data Source=DESKTOP-JVU6NMI\\SQLEXPRESS;Initial Catalog=M_IDataBase;User ID=asds;Password=asd");
+            dataBaseConnection.ChangeTable(m_i, 1);
         }
 
         private void CancelAddButton(object sender, RoutedEventArgs e)

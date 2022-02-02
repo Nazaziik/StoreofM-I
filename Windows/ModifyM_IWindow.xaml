@@ -37,7 +37,7 @@
 
         <!--SerialNumber-->
         <TextBlock Grid.Column="0" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center">SerialNumber</TextBlock>
-        <local:SerialNumberControl x:Name="PeselBox" Grid.Column="1" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center" Margin = "10px" Text="{Binding SerialNumber, Mode=TwoWay}"/>
+        <local:SerialNumberControl x:Name="PeselBox" Grid.Column="1" Grid.Row="3" TextAlignment="Center" VerticalAlignment="Center" Margin = "10px" Text="{Binding SerialNumber, Mode=TwoWay}" IsReadOnly="True"/>
 
         <!--ProdusingDate-->
         <TextBlock Grid.Column="0" Grid.Row="4" TextAlignment="Center" VerticalAlignment="Center">Produsing Date</TextBlock>

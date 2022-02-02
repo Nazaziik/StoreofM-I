@@ -21,8 +21,8 @@ namespace StoreofM_I.Windows
             if (index > -1)
             {
                 M_I tempMI = M_I.M_IList[index];
-                //DataBaseConnection dataBaseConnection = new DataBaseConnection(@"Data Source=DESKTOP-JVU6NMI\\SQLEXPRESS;Initial Catalog=M_IDataBase;User ID=asds;Password=asd");
-                //dataBaseConnection.DeleteElement(tempMI);
+                DataBaseConnection dataBaseConnection = new DataBaseConnection("Data Source=DESKTOP-JVU6NMI\\SQLEXPRESS;Initial Catalog=M_IDataBase;User ID=asds;Password=asd");
+                dataBaseConnection.ChangeTable(tempMI, 3);
                 M_I.M_IList.RemoveAt(index);
             }
 
