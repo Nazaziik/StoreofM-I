@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace StoreofM_I.Windows
@@ -41,6 +42,12 @@ namespace StoreofM_I.Windows
 
         private void AddNewInstrument()
         {
+            if (m_i.Image == null)
+            {
+                Uri uri = new Uri("/Images/whiteBackground.jpg", UriKind.Relative);
+                ImageSource imgSource = new BitmapImage(uri);
+                imgDynamic.Source = imgSource;
+            }
             M_I.M_IList.Add(m_i);
             DataBaseConnection dataBaseConnection = new DataBaseConnection("Data Source=DESKTOP-JVU6NMI\\SQLEXPRESS;Initial Catalog=M_IDataBase;User ID=asds;Password=asd");
             dataBaseConnection.ChangeTable(m_i, 1);

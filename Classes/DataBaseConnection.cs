@@ -29,7 +29,7 @@ namespace StoreofM_I
             {
                 while (dataReader.Read())
                 {
-                    tempList.Add(new M_I(dataReader.GetString(0), dataReader.GetString(1), Convert.ToInt32(dataReader.GetValue(2)), dataReader.GetString(3), dataReader.GetDateTime(4), dataReader.GetString(5)/*, dataReader.GetString(6)*/));
+                    tempList.Add(new M_I(dataReader.GetString(0), dataReader.GetString(1), Convert.ToInt32(dataReader.GetValue(2)), dataReader.GetString(3), dataReader.GetDateTime(4), dataReader.GetString(5), Convert.FromBase64String(dataReader.GetString(6))));
                 }
             }
             finally
@@ -49,7 +49,7 @@ namespace StoreofM_I
             switch (mode)
             {
                 case 1:
-                    sql = $"Insert into M_ITable (Owner_Name,Producent,Age,Serial_Number,Producing_Date,Type,Picture) values('" + $"{changedMI.OwnerName}" + "','" + $"{changedMI.Producent}" + "','" + $"{changedMI.Age}" + "','" + $"{changedMI.SerialNumber}" + "'," + $"{changedMI.ProdusingDate.Year}/{changedMI.ProdusingDate.Month}/{changedMI.ProdusingDate.Day}" + ",'" + $"{changedMI.TypeOf}" + "','" + $"{Convert.ToString(changedMI.ImageBuffer)}" + "')";
+                    sql = $"Insert into M_ITable (Owner_Name,Producent,Age,Serial_Number,Producing_Date,Type,Picture) values('" + $"{changedMI.OwnerName}" + "','" + $"{changedMI.Producent}" + "','" + $"{changedMI.Age}" + "','" + $"{changedMI.SerialNumber}" + "'," + $"{changedMI.ProdusingDate.Year}/{changedMI.ProdusingDate.Month}/{changedMI.ProdusingDate.Day}" + ",'" + $"{changedMI.TypeOf}" + "','" + $"{Convert.ToBase64String(changedMI.ImageBuffer)}" + "')";
                     break;
                 case 2:
                     sql = $"Update M_ITable set Owner_Name='" + $"{changedMI.OwnerName}" + "',Producent ='" + $"{changedMI.Producent}" + "',Age =" + $"{ changedMI.Age }" + ",Producing_Date=" + $"{changedMI.ProdusingDate.Year}/{changedMI.ProdusingDate.Month}/{changedMI.ProdusingDate.Day}" + ",Type='" + $"{changedMI.TypeOf}" + "',Picture='" + $"{Convert.ToString(changedMI.ImageBuffer)}" + "' where Serial_Number='" + $"{changedMI.SerialNumber}" + "'";

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Globalization;
 using System.IO;
-using System.Text;
 using System.Windows.Media.Imaging;
 using System.Xml.Serialization;
 
@@ -39,7 +36,7 @@ namespace StoreofM_I
             set { _serialNumber = value; }
         }
 
-        private DateTime _produsingDate;
+        private DateTime _produsingDate = new DateTime(2000,01,01);
         public DateTime ProdusingDate
         {
             get { return _produsingDate; }
@@ -105,7 +102,7 @@ namespace StoreofM_I
 
         public M_I() { }
 
-        public M_I(string ownerName, string producent, int age, string serialNumber, DateTime produsingDate, string typeOf/*, string image*/)
+        public M_I(string ownerName, string producent, int age, string serialNumber, DateTime produsingDate, string typeOf, byte[] image)
         {
             _ownerName = ownerName;
             _producent = producent;
@@ -113,7 +110,7 @@ namespace StoreofM_I
             _serialNumber = serialNumber;
             _produsingDate = produsingDate;
             _typeOf = typeOf;
-            //ImageBuffer = Encoding.ASCII.GetBytes(image);
+            ImageBuffer = image;
         }
 
         public M_I(M_I MusicalInstrument)

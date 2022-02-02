@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Windows;
+using System.Windows.Controls;
 using StoreofM_I.Windows;
 
 namespace StoreofM_I
@@ -17,28 +17,7 @@ namespace StoreofM_I
 
             ctlGrid.ItemsSource = M_I.M_IList;
 
-            #region Reports
-            this.ReportViewer.ReportLoaded += (sen, arg) =>
-            {
-                List<BoldReports.Windows.DataSourceCredentials> dataSourceCrdentials = new List<BoldReports.Windows.DataSourceCredentials>();
-
-                foreach (var dataSource in this.ReportViewer.GetDataSources())
-                {
-                    BoldReports.Windows.DataSourceCredentials crdentials = new BoldReports.Windows.DataSourceCredentials();
-                    crdentials.Name = dataSource.Name;
-                    crdentials.UserId = null;
-                    crdentials.Password = null;
-                    crdentials.IntegratedSecurity = true;
-                    dataSourceCrdentials.Add(crdentials);
-                }
-
-                this.ReportViewer.SetDataSourceCredentials(dataSourceCrdentials);
-            };
-            this.ReportViewer.ReportServerUrl = "http://M212S:80/ReportServer";
-            this.ReportViewer.ReportServerCredential = System.Net.CredentialCache.DefaultCredentials;
-            this.ReportViewer.ReportPath = @"/Reports/Report1.rdl";
-            this.ReportViewer.RefreshReport();
-            #endregion
+            ctlGrid.SelectionChanged += delegate (object sender, SelectionChangedEventArgs e) { ModiffyButton.IsEnabled = true; };
         }
 
         #region Buttons actions
@@ -58,24 +37,21 @@ namespace StoreofM_I
 
         private void ModifyButoon(object sender, RoutedEventArgs e)
         {
-            if (ctlGrid.SelectedItem != null)
-            {
-                ModiffyButton.IsEnabled = true;
-                ModifyM_IWindow modifyM_I = new ModifyM_IWindow();
-                M_I tempM_I = new M_I((M_I)ctlGrid.SelectedItem);
-                modifyM_I.DataContext = tempM_I;
-                modifyM_I.ShowDialog();
+            ModifyM_IWindow modifyM_I = new ModifyM_IWindow();
+            M_I tempM_I = new M_I((M_I)ctlGrid.SelectedItem);
+            modifyM_I.DataContext = tempM_I;
+            modifyM_I.ShowDialog();
 
-                if (modifyM_I.ModifySubmitted)
-                {
-                    int index = M_I.M_IList.IndexOf((M_I)ctlGrid.SelectedItem);
-                    DataBaseConnection dataBaseConnection = new DataBaseConnection("Data Source=DESKTOP-JVU6NMI\\SQLEXPRESS;Initial Catalog=M_IDataBase;User ID=asds;Password=asd");
-                    dataBaseConnection.ChangeTable(tempM_I, 2);
-                    M_I.M_IList[index] = tempM_I;
-                }
-                ctlGrid.Items.Refresh();
+            if (modifyM_I.ModifySubmitted)
+            {
+                int index = M_I.M_IList.IndexOf((M_I)ctlGrid.SelectedItem);
+                DataBaseConnection dataBaseConnection = new DataBaseConnection("Data Source=DESKTOP-JVU6NMI\\SQLEXPRESS;Initial Catalog=M_IDataBase;User ID=asds;Password=asd");
+                dataBaseConnection.ChangeTable(tempM_I, 2);
+                M_I.M_IList[index] = tempM_I;
             }
+            ctlGrid.Items.Refresh();
         }
+
         #endregion
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

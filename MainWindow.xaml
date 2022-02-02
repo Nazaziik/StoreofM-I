@@ -17,7 +17,6 @@
             <RowDefinition Height="1.5*"></RowDefinition>
             <RowDefinition Height="0.2*"></RowDefinition>
             <RowDefinition Height="0.2*"></RowDefinition>
-            <RowDefinition Height="0.4*"></RowDefinition>
         </Grid.RowDefinitions>
 
         <!-- Data Grid -->
@@ -58,10 +57,7 @@
         <Button Grid.Column="1" Grid.Row="1" Margin="10px 20px 40px 10px" Click="DeleteButton" FontSize="25">Delete</Button>
 
         <!-- Modify Button-->
-        <Button x:Name="ModiffyButton" Grid.ColumnSpan="2" Grid.Row="2" Margin=" 90 15 90 15" Click="ModifyButoon" FontSize="25" IsEnabled="True">Modify</Button>
-
-        <!-- Reports -->
-        <BoldReports:ReportViewer x:Name="ReportViewer" Grid.ColumnSpan="2" Grid.Row="3"/>
+        <Button x:Name="ModiffyButton" Grid.ColumnSpan="2" Grid.Row="2" Margin=" 90 15 90 15" Click="ModifyButoon" FontSize="25" IsEnabled="False">Modify</Button>
 
     </Grid>
 </Window>
